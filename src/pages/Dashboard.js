@@ -9,8 +9,8 @@ const Dashboard = () => {
   useEffect(() => {
     const fetchCounts = async () => {
       try {
-        const dailyRes = await axios.get('http://localhost:5000/api/url/count/daily');
-        const monthlyRes = await axios.get('http://localhost:5000/api/url/count/monthly');
+        const dailyRes = await axios.get('https://day-42-url-shortner-application-backend.onrender.com/api/url/count/daily');
+        const monthlyRes = await axios.get('https://day-42-url-shortner-application-backend.onrender.com/api/url/count/monthly');
         setDailyCount(dailyRes.data.count);
         setMonthlyCount(monthlyRes.data.count);
       } catch (err) {

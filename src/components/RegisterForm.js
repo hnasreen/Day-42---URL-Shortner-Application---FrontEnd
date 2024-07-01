@@ -15,7 +15,7 @@ const RegisterForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-       await axios.post('http://localhost:5000/api/auth/register', { email, firstName, lastName, password });
+       await axios.post('https://day-42-url-shortner-application-backend.onrender.com/api/auth/register', { email, firstName, lastName, password });
      
       setMessage('Registration successful! Please check your email to activate your account.');
       navigate('/login'); 

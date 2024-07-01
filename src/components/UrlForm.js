@@ -39,7 +39,7 @@ const UrlForm = () => {
             {/* <div> */}
             <b>  {shortUrl} </b>
             {/* </div> */}
-            <a href={`http://localhost:5000/api/url/${shortUrl}`} target="_blank"> Click</a>
+            <a href={`https://day-42-url-shortner-application-backend.onrender.com/api/url/${shortUrl}`} target="_blank"> Click</a>
             <br/>
             <br/>
         </div>

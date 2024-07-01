@@ -10,7 +10,7 @@ const UrlTable = () => {
   useEffect(() => {
     const fetchUrls = async () => {
       try {
-        const res = await axios.get('http://localhost:5000/api/url/stats');
+        const res = await axios.get('https://day-42-url-shortner-application-backend.onrender.com/api/url/stats');
         setUrls(res.data);
       } catch (err) {
         setMessage('Failed to fetch URLs.');
