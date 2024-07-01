@@ -10,7 +10,7 @@ const UrlForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post('http://localhost:5000/api/url/shorten', { longUrl });
+      const res = await axios.post('https://day-42-url-shortner-application-backend.onrender.com/api/url/shorten', { longUrl });
       setShortUrl(res.data.shortUrl);
       setMessage('URL shortened successfully');
     } catch (err) {
