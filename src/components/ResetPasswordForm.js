@@ -11,7 +11,12 @@ const ResetPasswordForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post(`https://day-42-url-shortner-application-backend.onrender.com/api/auth/reset-password/${token}`, { newPassword });
+      await axios.post(`https://day-42-url-shortner-application-backend.onrender.com/api/auth/reset-password/${token}`, { newPassword }, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        },
+        withCredentials:true
+      });
       setMessage('Password reset successful');
     } catch (err) {
       setMessage('Password reset failed. Please try again.');

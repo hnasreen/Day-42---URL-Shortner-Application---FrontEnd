@@ -12,8 +12,10 @@ const LoginForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post('https://day-42-url-shortner-application-backend.onrender.com/api/auth/login', { email, password });
-      localStorage.setItem('token', res.data.token);
+      const res = await axios.post('https://day-42-url-shortner-application-backend.onrender.com/api/auth/login', { email, password },{header:{"content-type":"application/json"},withCredentials:true});
+      console.log(response.data.userId)
+      const userId=response.data.userId
+      window.localStorage.setItem("userID",userId)
       navigate('/dashboard'); 
     } catch (err) {
       setMessage('Invalid credentials');
