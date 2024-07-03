@@ -11,7 +11,7 @@ const ActivateAccount = () => {
   useEffect(() => {
     const activateAccount = async () => {
       try {
-        const response = await axios.get(`https://day-42-url-shortner-application-backend.onrender.com/api/auth/activate/${token}`);
+        const response = await axios.get(`http://localhost:5000/api/auth/activate/${token}`);
         setMessage(response.data.message);
       } catch (error) {
         setError(

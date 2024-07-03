@@ -8,7 +8,7 @@ const UrlRedirects = () => {
   useEffect(() => {
     const fetchLongUrl = async () => {
       try {
-        const res = await axios.get(`https://day-42-url-shortner-application-backend.onrender.com/api/url/${shortUrl}`);
+        const res = await axios.get(`http://localhost:5000/api/url/${shortUrl}`);
         window.location.replace(res.data.longUrl);
       } catch (error) {
         console.error('Failed to fetch long URL:', error);

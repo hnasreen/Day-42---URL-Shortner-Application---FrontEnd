@@ -23,7 +23,7 @@ const App = () => {
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/auth/activate/:token" element={<ActivateAccount />} />
           <Route path="/forgot-password" element={<ForgotPasswordPage />} />
-          <Route path="/reset-password/:token" element={<ResetPasswordPage />} />
+          <Route path="/reset-password/:id/:token" element={<ResetPasswordPage />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/url-shortener" element={<UrlShortenerPage />} />
           <Route path="/:shortUrl" element={<UrlRedirects />} />

@@ -9,8 +9,7 @@ const ForgotPasswordForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('https://day-42-url-shortner-application-backend.onrender.com/api/auth/forgot-password', { email },{header:{"content-type":"application/json"},
-        withCredentials:true
+      await axios.post('http://localhost:5000/api/auth/forgot-password', { email },{header:{"content-type":"application/json"}
       });
       setMessage('Password reset link sent to your email.');
     } catch (err) {

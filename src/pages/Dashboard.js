@@ -8,9 +8,14 @@ const Dashboard = () => {
 
   useEffect(() => {
     const fetchCounts = async () => {
+      const token = localStorage.getItem("token")
+      const headers = {header: {
+        "Content-Type": "application/json",
+        "authtoken": token, // Replace 'token' with your actual token
+      }}
       try {
-        const dailyRes = await axios.get('https://day-42-url-shortner-application-backend.onrender.com/api/url/count/daily');
-        const monthlyRes = await axios.get('https://day-42-url-shortner-application-backend.onrender.com/api/url/count/monthly');
+        const dailyRes = await axios.post('http://localhost:5000/api/url/count/daily',headers);
+        const monthlyRes = await axios.post('http://localhost:5000/api/url/count/monthly',headers);
         setDailyCount(dailyRes.data.count);
         setMonthlyCount(monthlyRes.data.count);
       } catch (err) {
