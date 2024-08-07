@@ -12,7 +12,7 @@ const LoginForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post('http://localhost:5000/api/auth/login', { email, password },{header:{"content-type":"application/json"}});
+      const res = await axios.post('http://localhost:5000/api/auth/login', { email, password });
       console.log(res.data.userId)
       const userId=res.data.userId
       const token = res.data.jwt;
@@ -39,6 +39,7 @@ const LoginForm = () => {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             placeholder="Email"
+            autoComplete='true'
             required
           />
         </div>
@@ -51,6 +52,7 @@ const LoginForm = () => {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             placeholder="Password"
+            autoComplete='true'
             required
           />
         </div>

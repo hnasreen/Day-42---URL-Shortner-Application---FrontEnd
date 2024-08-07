@@ -9,13 +9,22 @@ const Dashboard = () => {
   useEffect(() => {
     const fetchCounts = async () => {
       const token = localStorage.getItem("token")
-      const headers = {header: {
-        "Content-Type": "application/json",
-        "authtoken": token, // Replace 'token' with your actual token
-      }}
+      console.log(token)
+      // const headers = {
+      //   'Authorization': `Bearer ${token}`,
+      //   'Content-Type': 'application/json' // Add this if you're sending JSON data
+      // };
       try {
-        const dailyRes = await axios.post('http://localhost:5000/api/url/count/daily',headers);
-        const monthlyRes = await axios.post('http://localhost:5000/api/url/count/monthly',headers);
+        console.log(headers.Authorization)
+        // const token=headers.Authorization
+        const dailyRes = await axios.get('http://localhost:5000/api/url/count/daily',{headers:{
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json' // Add this if you're sending JSON data
+        }});
+        const monthlyRes = await axios.get('http://localhost:5000/api/url/count/monthly',{headers:{
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json' // Add this if you're sending JSON data
+        }});
         setDailyCount(dailyRes.data.count);
         setMonthlyCount(monthlyRes.data.count);
       } catch (err) {

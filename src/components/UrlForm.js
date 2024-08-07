@@ -1,6 +1,8 @@
 // components/UrlForm.js
 import React, { useState } from 'react';
 import axios from 'axios';
+import UrlRedirects from './UrlRedirects.js'
+import { Link } from 'react-router-dom';
 
 const UrlForm = () => {
   const [longUrl, setLongUrl] = useState('');
@@ -9,8 +11,19 @@ const UrlForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const token = localStorage.getItem("token")
+
     try {
-      const res = await axios.post('http://localhost:5000/api/url/shorten', { longUrl });
+      const res = await axios.post(
+        'http://localhost:5000/api/url/shorten',
+        { longUrl }, // Request payload should be passed as the second argument
+        {
+          headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json' // This is correct if you're sending JSON data
+          }
+        }
+      );
       setShortUrl(res.data.shortUrl);
       setMessage('URL shortened successfully');
     } catch (err) {
@@ -34,16 +47,17 @@ const UrlForm = () => {
       </form>
       {shortUrl && (
         <div>
-          <br/>
-            Short URL: {' '}
-            {/* <div> */}
-            <b>  {shortUrl} </b>
-            {/* </div> */}
-            <a href={`http://localhost:5000/api/url/${shortUrl}`} target="_blank"> Click</a>
-            <br/>
-            <br/>
+          <br />
+          Short URL: {' '}
+          {/* <div> */}
+          <Link to = {`/${shortUrl}`}> {shortUrl} </Link>
+          {/* </div> */}
+          {/* <a href={`$shortUrl`} target="_blank"> Click</a> */}
+          {/* <UrlRedirects redirect={shortUrl}/> */}
+          <br />  
+          <br />
         </div>
-        
+
       )}
     </div>
   );

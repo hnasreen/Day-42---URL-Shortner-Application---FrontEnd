@@ -9,8 +9,13 @@ const UrlTable = () => {
 
   useEffect(() => {
     const fetchUrls = async () => {
+      const token = localStorage.getItem("token")
+
       try {
-        const res = await axios.post('http://localhost:5000/api/url/stats');
+        const res = await axios.get('http://localhost:5000/api/url/stats',{headers:{
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json'// Add this if you're sending JSON data
+        }});
         setUrls(res.data);
       } catch (err) {
         setMessage('Failed to fetch URLs.');
